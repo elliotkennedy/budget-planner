@@ -1,1 +1,3 @@
 # budget-planner
+
+ MEAN app
