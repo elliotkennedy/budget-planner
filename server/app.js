@@ -28,7 +28,7 @@ app.use('/assets/js/Reflect.js', express.static(path.join(__dirname, '../node_mo
 app.use('/assets/js/system.src.js', express.static(path.join(__dirname, '../node_modules/systemjs/dist', 'system.src.js')));
 
 //expose semantic-ui
-app.use('/assets/css/semantic.min.css', express.static(path.join(__dirname, '../node_modules/semantic-ui/dist', 'semantic.min.css')));
+app.use('/assets/css/semantic.min.css', express.static(path.join(__dirname, '../node_modules/semantic-ui-css', 'semantic.min.css')));
 
 // api routes
 app.use('/user', users);
