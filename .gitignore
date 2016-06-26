@@ -3,3 +3,5 @@ node_modules
 budget-planner.iml
 *.log
 typings
+client/**/*.js
+client/**/*.js.map
