@@ -9,7 +9,7 @@ class DBManager {
             return;
         }
 
-        mongoose.connect('mongodb://localhost/have-faith');
+        mongoose.connect('mongodb://localhost/budget-planner');
 
         this.db = mongoose.connection;
         this.db.once('open', console.log);
