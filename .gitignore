@@ -1,3 +1,5 @@
 node_modules
 .idea
 budget-planner.iml
+*.log
+typings
