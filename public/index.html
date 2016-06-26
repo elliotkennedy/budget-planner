@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/semantic-ui-css/semantic.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- 1. Load libraries -->
     <!-- Polyfill(s) for older browsers -->
-    <script src="assets/js/shim.min.js"></script>
-    <script src="assets/js/zone.js"></script>
-    <script src="assets/js/Reflect.js"></script>
-    <script src="assets/js/system.src.js"></script>
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
     <!-- 2. Configure SystemJS -->
     <script src="assets/js/systemjs.config.js"></script>
     <script>
