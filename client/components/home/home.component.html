@@ -1,16 +1,39 @@
 <div class="ui container">
-    <sm-segment class="raised">
-        <h1>Silicon Markets Budget Planner</h1>
-        <sm-list class="ui list bulleted">
-            <sm-item class="item">username: {{user.username}}</sm-item>
-            <sm-item class="item">password: {{user.password}}</sm-item>
-        </sm-list>
-        <p>
-            Hardcoded data used for login and signup functionality.
-        </p>
-    </sm-segment>
+    <div>
+        <div class="image-text">
+            <h1 class="main-header">Silicon Markets</h1>
+            <h2 class="sub-header">Budget Planner</h2>
+            <sm-button class="positive">Get Started Now</sm-button>
+        </div>
+        <img class="ui fluid image" src="assets/img/canary-wharf-banner.jpg">
+    </div>
     <br/>
-
+    <div class="ui raised segment">
+        <h1>Take control of your finances today!</h1>
+        <p>
+            Nam porta luctus elit, et tempus velit. Duis et sapien viverra, rhoncus lacus a, auctor diam. Vestibulum ac scelerisque neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ultricies aliquet euismod. Donec pharetra, enim tincidunt mattis malesuada, velit risus porta justo, a scelerisque nunc tortor eget dolor. Sed ipsum dolor, eleifend eu ipsum ut, commodo varius purus. Ut eget libero vestibulum, semper purus eget, hendrerit augue. Proin vehicula, sapien quis vehicula ultrices, orci enim aliquam ipsum, in auctor lorem tortor id eros. Ut a iaculis justo. Pellentesque id urna sit amet magna commodo pretium sit amet eu sapien. Mauris arcu dui, tincidunt accumsan lobortis ut, interdum in mi. Nam gravida augue ac rutrum scelerisque. Vivamus tempus finibus lacinia.
+        </p>
+        <img class="ui small medium floated image" src="assets/img/stock-image.jpg">
+        <p>
+            Curabitur volutpat, risus id condimentum sollicitudin, est eros scelerisque enim, sed aliquam sem metus at nisi. Donec tristique nec nulla sit amet fringilla. Donec eget consectetur magna, sed dapibus risus. Aliquam venenatis dapibus nisi a fermentum. Donec quam massa, scelerisque id arcu quis, commodo sagittis quam. In tristique risus purus, ut vestibulum nisl mattis vitae. Nam luctus id elit quis tincidunt. Sed fermentum tortor nisi, ut lacinia lorem bibendum non. Nunc quis quam sagittis, gravida tellus id, tincidunt sem. Cras interdum, enim et pellentesque ultricies, est ipsum imperdiet nunc, a porta justo nisi a lectus.
+        </p>
+    </div>
+    <br/>
+    <div class="ui horizontal segments">
+        <div class="ui circular segment">
+            <h2 class="ui header">
+                Buy Now
+                <div class="sub header">$10.99</div>
+            </h2>
+        </div>
+        <div class="ui inverted circular segment">
+            <h2 class="ui inverted header">
+                Buy Now
+                <div class="sub header">$10.99</div>
+            </h2>
+        </div>
+    </div>
+    <br/>
     <sm-button class="" (click)="call()">Call protected API</sm-button>
     <sm-button class="positive" (click)="login()">Login</sm-button>
     <sm-button class="basic red" (click)="remove()">Remove JWT from localStorage</sm-button>
