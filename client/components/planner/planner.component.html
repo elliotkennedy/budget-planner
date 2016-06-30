@@ -2,34 +2,30 @@
     <div class="ui padded raised segment">
         <h1>Budget Planner</h1>
         <form class="ui form">
-            <h4 class="ui dividing header">Income</h4>
+            <h4 class="ui dividing header">Your Total Income</h4>
             <div class="inline fields">
                 <div class="eight wide field">
                     <label>Add Income</label>
-                    <select class="ui fluid dropdown">
+                    <input list="incomeSources" class="ui search dropdown" placeholder="Income type">
+                    <datalist id="incomeSources">
                         <option value="Salary">Salary</option>
                         <option value="Bonus">Bonus</option>
-                    </select>
+                    </datalist>
                 </div>
                 <div class="four wide field">
+                    <label>Every</label>
                     <select class="ui fluid dropdown">
+                        <option value="Day">Day</option>
+                        <option value="Week">Week</option>
                         <option value="Month">Month</option>
+                        <option value="Year">Year</option>
                     </select>
                 </div>
                 <div class="four wide field">
-                    <select class=""></select>
-                </div>
-            </div>
-
-
-            <div class="field">
-                <label>Salary</label>
-                <div class="two fields">
-                    <div class="field">
-                        <input type="text" name="shipping[first-name]" placeholder="First Name">
-                    </div>
-                    <div class="field">
-                        <input type="text" name="shipping[last-name]" placeholder="Last Name">
+                    <div class="ui right labeled input">
+                        <div class="ui label">$</div>
+                        <input type="text" placeholder="Amount">
+                        <div class="ui basic label">.00</div>
                     </div>
                 </div>
             </div>
@@ -38,11 +34,11 @@
     <div class="ui padded raised segment">
         <div class="ui two column divided grid">
             <div class="column">
-                <h1>Your Income</h1>
+                <h1 class="ui dividing header">Your Income Breakdown</h1>
                 <canvas [doughnutChart]="incomeData"></canvas>
             </div>
             <div class="column">
-                <canvas doughnutChart></canvas>
+                <!--<canvas doughnutChart></canvas>-->
             </div>
         </div>
     </div>

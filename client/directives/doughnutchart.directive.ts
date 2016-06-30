@@ -22,18 +22,17 @@ export class DoughnutChartDirective {
         var ctx = canvas.getContext('2d');
 
         var values = [];
-        for (var a in this.doughnutChart) {
-            values[a] = a.value;
-        }
+        var labels = [];
+
+        this.doughnutChart.forEach(a => {
+            labels.push(a.name);
+            values.push(a.value);
+        });
 
         var data = {
-            labels: [
-                "Red",
-                "Blue",
-                "Yellow"
-            ],
+            labels: labels,
             datasets: [{
-                data: this.doughnutChart,
+                data: values,
                 backgroundColor: [
                     "#FF6384",
                     "#36A2EB",
