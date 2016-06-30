@@ -1,0 +1,49 @@
+<div class="ui container">
+    <div class="ui padded raised segment">
+        <h1>Budget Planner</h1>
+        <form class="ui form">
+            <h4 class="ui dividing header">Income</h4>
+            <div class="inline fields">
+                <div class="eight wide field">
+                    <label>Add Income</label>
+                    <select class="ui fluid dropdown">
+                        <option value="Salary">Salary</option>
+                        <option value="Bonus">Bonus</option>
+                    </select>
+                </div>
+                <div class="four wide field">
+                    <select class="ui fluid dropdown">
+                        <option value="Month">Month</option>
+                    </select>
+                </div>
+                <div class="four wide field">
+                    <select class=""></select>
+                </div>
+            </div>
+
+
+            <div class="field">
+                <label>Salary</label>
+                <div class="two fields">
+                    <div class="field">
+                        <input type="text" name="shipping[first-name]" placeholder="First Name">
+                    </div>
+                    <div class="field">
+                        <input type="text" name="shipping[last-name]" placeholder="Last Name">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="ui padded raised segment">
+        <div class="ui two column divided grid">
+            <div class="column">
+                <h1>Your Income</h1>
+                <canvas [doughnutChart]="incomeData"></canvas>
+            </div>
+            <div class="column">
+                <canvas doughnutChart></canvas>
+            </div>
+        </div>
+    </div>
+</div>

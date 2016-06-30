@@ -7,6 +7,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
     template: `<div class="ui container">
         <nav class="ui secondary pointing menu">
             <a [routerLink]="['/']" class="item">Home</a>
+            <a [routerLink]="['/planner']" class="item">Planner</a>
             <div class="right menu">
                 <a class="ui item">Logout</a>
             </div>

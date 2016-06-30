@@ -1,13 +1,12 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
-import { Type } from '@angular/core';
 
 import { HomeComponent } from './components/home/home.component';
-// import { ContactComponent } from './components/contact/contact.component';
+import { PlannerComponent } from './components/planner/planner.component';
 
 const routes: RouterConfig = [
-    { path: '', component: <Type>HomeComponent, terminal: true },
-    // { path: 'contact', component: <Type>ContactComponent }
+    { path: '', component: HomeComponent, terminal: true },
+    { path: 'planner', component: PlannerComponent }
 ];
 
 export const APP_ROUTER_PROVIDERS = [
