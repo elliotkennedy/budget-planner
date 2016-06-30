@@ -10,6 +10,6 @@ const routes: RouterConfig = [
 ];
 
 export const APP_ROUTER_PROVIDERS = [
-    provideRouter(routes),
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    provideRouter(routes)
+    // { provide: LocationStrategy, useClass: HashLocationStrategy }
 ];
