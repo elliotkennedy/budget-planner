@@ -5,7 +5,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
     directives: [ROUTER_DIRECTIVES],
     selector: 'app',
     template: `<div class="ui container">
-        <nav class="ui secondary pointing menu">
+        <nav class="ui top fixed menu">
             <a [routerLink]="['/']" class="item">Home</a>
             <a [routerLink]="['/planner']" class="item">Planner</a>
             <div class="right menu">

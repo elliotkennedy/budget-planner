@@ -3,7 +3,7 @@
         <div class="image-text">
             <h1 class="main-header">Silicon Markets</h1>
             <h2 class="sub-header">Budget Planner</h2>
-            <a [routerLink]="['/planner']" class="huge positive ui button">Get Started Now</a>
+            <a [routerLink]="['/planner']" class="ui button huge positive">Get Started Now</a>
         </div>
         <img class="ui fluid image" src="assets/img/canary-wharf-banner.jpg">
     </div>
@@ -65,12 +65,12 @@
         </div>
     </div>
     <br/>
-    <sm-button class="" (click)="call()">Call protected API</sm-button>
-    <sm-button class="positive" (click)="login()">Login</sm-button>
-    <sm-button class="basic red" (click)="remove()">Remove JWT from localStorage</sm-button>
+    <button class="ui button" (click)="call()">Call protected API</button>
+    <button class="ui button positive" (click)="login()">Login</button>
+    <button class="ui button basic red" (click)="remove()">Remove JWT from localStorage</button>
 
 
-    <sm-button class="right floated" (click)="signup()">Signup</sm-button>
+    <button class="ui button right floated" (click)="signup()">Signup</button>
 
     <div class="ui divider hidden"></div>
 
