@@ -1,8 +1,30 @@
 <div class="ui container">
-    <div class="ui padded raised segment">
-        <h1>Budget Planner</h1>
+    <div class="ui top attached segment">
+        <h2 class="ui left floated">Your Total Income</h2>
+    </div>
+    <div class="ui attached segment">
+        <table class="ui very basic padded table">
+            <tbody>
+                <tr *ngFor="let income of budget.income">
+                    <td><span style="font-weight: bold">{{income.name}}</span></td>
+                    <td>{{income.rate}}</td>
+                    <td>
+                        <span class="ui labeled input">
+                            <span class="ui label">£</span>
+                            <input type="text" value="{{income.value}}">
+                        </span>
+                    </td>
+                    <td>£ 10.99</td>
+                    <td>Bin</td>
+                </tr>
+                <tr>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ui attached segment">
         <form class="ui form">
-            <h4 class="ui dividing header">Your Total Income</h4>
             <div class="inline fields">
                 <div class="eight wide field">
                     <label>Add Income</label>
@@ -15,17 +37,16 @@
                 <div class="four wide field">
                     <label>Every</label>
                     <select class="ui fluid dropdown">
-                        <option value="Day">Day</option>
+                        <option value="DAY">Day</option>
                         <option value="Week">Week</option>
                         <option value="Month">Month</option>
                         <option value="Year">Year</option>
                     </select>
                 </div>
                 <div class="four wide field">
-                    <div class="ui right labeled input">
+                    <div class="ui labeled input">
                         <div class="ui label">£</div>
                         <input type="text" placeholder="Amount">
-                        <div class="ui basic label">.00</div>
                     </div>
                 </div>
             </div>
@@ -35,7 +56,7 @@
         <div class="ui two column divided grid">
             <div class="column">
                 <h1 class="ui dividing header">Your Income Breakdown</h1>
-                <canvas [doughnutChart]="incomeData"></canvas>
+                <canvas [doughnutChart]="budget.income"></canvas>
             </div>
             <div class="column">
                 <!--<canvas doughnutChart></canvas>-->

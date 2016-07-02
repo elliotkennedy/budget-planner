@@ -6,8 +6,8 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
     selector: 'app',
     template: `<div class="ui container">
         <nav class="ui top fixed menu">
-            <a [routerLink]="['/']" class="item">Home</a>
-            <a [routerLink]="['/planner']" class="item">Planner</a>
+            <a [routerLink]="['/']" routerLinkActive="active" class="item">Home</a>
+            <a [routerLink]="['/planner']" routerLinkActive="active" class="item">Planner</a>
             <div class="right menu">
                 <a class="ui item">Logout</a>
             </div>
