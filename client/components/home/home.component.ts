@@ -18,7 +18,9 @@ export class HomeComponent {
         password: "angualr2express",
         username: "john"
     };
+    
     constructor(public http: Http) {}
+
     signup() {
 
         this.http.post("/login/signup", JSON.stringify({ password: this.user.password, username: this.user.username }), new RequestOptions({

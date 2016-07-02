@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 
-@Injectable
+@Injectable()
 export class AuthService {
 
-    isLoggedIn: boolean = false;
+    loggedIn: boolean = false;
 
-    
+
 
 }
