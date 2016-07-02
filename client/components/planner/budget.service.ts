@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 
 export class Budget {
 
@@ -15,7 +15,7 @@ export class Budget {
     }
 }
 
-class Expense {
+export class Expense {
     constructor(public name: String, public value: number, public rate: Rate) {}
 
     getWeeklyValue() {
@@ -37,19 +37,22 @@ enum Rate {
     YEAR
 }
 
+const staticBudget = createStaticBudget();
+
+function createStaticBudget() {
+    var budget = new Budget();
+    budget.addIncome(new Expense("Salary", 10000, Rate.YEAR));
+    budget.addIncome(new Expense("Child Support", 10.99, Rate.DAY));
+    return budget;
+}
+
+let budgetPromise = Promise.resolve(staticBudget);
+
 @Injectable()
 export class BudgetService {
 
-    budget: Budget;
-
-    constructor() {
-        this.budget = new Budget();
-        this.budget.addIncome(new Expense("Salary", 10000, Rate.YEAR));
-        this.budget.addIncome(new Expense("Child Support", 10.99, Rate.DAY));
-    }
-
     getBudget() {
-        return this.budget;
+        return budgetPromise;
     }
 
 }

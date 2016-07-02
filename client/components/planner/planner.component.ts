@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { DoughnutChartDirective } from '../../directives/doughnutchart.directive';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { Budget, BudgetService } from './budget.service';
+import { BudgetService } from './budget.service';
 
 @Component({
     selector: 'planner',
@@ -15,14 +15,4 @@ import { Budget, BudgetService } from './budget.service';
     directives: [ ROUTER_DIRECTIVES, DoughnutChartDirective ],
     providers: [ BudgetService ]
 })
-export class PlannerComponent {
-
-    budget: Budget;
-
-    constructor(private budgetService: BudgetService) {}
-
-    ngOnInit() {
-        this.budget = this.budgetService.getBudget();
-    }
-
-}
+export class PlannerComponent {}

@@ -7,11 +7,21 @@
             <tbody>
                 <tr *ngFor="let income of budget.income">
                     <td><span style="font-weight: bold">{{income.name}}</span></td>
-                    <td>{{income.rate}}</td>
                     <td>
+                        <span>Every </span>
+                        <select *ngFor="" class="ui fluid dropdown">
+                            <option value="DAY">Day</option>
+                            <option value="Week">Week</option>
+                            <option value="Month">Month</option>
+                            <option value="Year">Year</option>
+                        </select>
+                        {{income.rate}}
+                    </td>
+                    <td>
+                        <span>I get </span>
                         <span class="ui labeled input">
                             <span class="ui label">£</span>
-                            <input type="text" value="{{income.value}}">
+                            <input type="text" [(ngModel)]="income.value" >
                         </span>
                     </td>
                     <td>£ 10.99</td>
