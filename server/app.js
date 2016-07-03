@@ -12,6 +12,7 @@ var dbManager = require('./modules/db-manager');
 var users = require('./routes/user');
 var auth = require('./routes/auth');
 var healthcheck = require('./routes/healthcheck');
+var budget = require('./routes/budget');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use(passport.session());
 app.use('/user', users);
 app.use('/auth', auth);
 app.use('/health', healthcheck);
+app.use('/budget', budget);
 
 app.use('/client', express.static(path.join(__dirname, '../client')));
 

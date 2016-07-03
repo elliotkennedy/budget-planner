@@ -3,30 +3,29 @@ const Budget = require('../models/Budget');
 
 module.exports = {
 
-    createOrUpdate: function(req, res) {
-        var newUser = new User({
-            username: req.body.username,
-            password: req.body.password
+    createBudget: function(req, res) {
+        var newBudget = new Budget({
+            _user: req.body._user,
+            income: req.body.income,
+            outgoings: req.body.outgoings
         });
-        newUser.save((err) => {
+        newBudget.save((err) => {
             if (err) {
                 console.error(err);
                 res.sendStatus(400);
             } else {
-                res.json(newUser);
+                res.json(newBudget);
             }
         });
     },
 
-    getUser: function (req, res) {
-        User.findOne({ username: req.params.username }, (err, user) => {
+    getBudgets: function (req, res) {
+        Budget.find({ "_user.ref": req.params.user }, (err, budgets) => {
             if (err) {
                 console.error(err);
                 res.sendStatus(500);
-            } else if (!user) {
-                res.sendStatus(404);
             } else {
-                res.json(user);
+                res.json(budgets);
             }
         });
     }
