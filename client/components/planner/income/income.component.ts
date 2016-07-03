@@ -10,13 +10,19 @@ import { Budget, BudgetService } from '../../../services/budget.service';
 export class IncomeComponent implements OnInit {
 
     budget: Budget = new Budget();
+    error: String;
 
     constructor(private budgetService: BudgetService) {}
 
     ngOnInit() {
-        this.budgetService.getBudget().then(budget => {
-            this.budget = budget;
-        });
+
+        this.budgetService.getBudget().subscribe(
+            budget => {
+                this.budget = budget;
+            },
+            error =>  {
+                this.error = <any>error
+            });
     }
 
 }

@@ -20,7 +20,7 @@ module.exports = {
     },
 
     getBudgets: function (req, res) {
-        Budget.find({ "_user.ref": req.params.user }, (err, budgets) => {
+        Budget.findOne({ "_user.ref": req.params.user }, (err, budgets) => {
             if (err) {
                 console.error(err);
                 res.sendStatus(500);

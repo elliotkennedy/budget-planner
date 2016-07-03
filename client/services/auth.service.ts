@@ -14,9 +14,11 @@ export class User {
 
 @Injectable()
 export class AuthService {
-
+    
     private loginUrl = 'auth/login';
     private userUrl = 'user';
+    
+    public user: User;
 
     constructor(private http: Http) {}
 

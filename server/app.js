@@ -25,12 +25,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({
-    secret: 'mys3cr37',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {secure: true}
-}));
 
 // api routes
 app.use('/user', users);

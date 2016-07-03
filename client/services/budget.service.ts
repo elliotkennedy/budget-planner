@@ -40,21 +40,10 @@ enum Rate {
     YEAR
 }
 
-const staticBudget = createStaticBudget();
-
-function createStaticBudget() {
-    var budget = new Budget();
-    budget.addIncome(new Expense("Salary", 10000, Rate.YEAR));
-    budget.addIncome(new Expense("Child Support", 10.99, Rate.DAY));
-    return budget;
-}
-
-let budgetPromise = Promise.resolve(staticBudget);
-
 @Injectable()
 export class BudgetService {
 
-    private budgetUrl = 'api/budget';
+    private budgetUrl = 'budget';
 
     constructor(private http: Http) {}
 
@@ -66,7 +55,7 @@ export class BudgetService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body.data || { };
+        return body.data || {};
     }
 
     private handleError(error: any) {

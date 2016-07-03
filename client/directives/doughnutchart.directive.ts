@@ -13,15 +13,14 @@ export class DoughnutChartDirective {
     element: any;
     myChart: any;
 
-    @Input() doughnutChart: Observable<Array<Expense>>;
+    @Input() doughnutChart: Array<Expense>;
 
     constructor(element: ElementRef) {
         this.element = element.nativeElement;
     }
 
     ngAfterViewInit() {
-        // this.renderDoughnut(this.doughnutChart.v);
-        this.doughnutChart.subscribe((value) => this.renderDoughnut(value));
+        this.renderDoughnut(this.doughnutChart);
     }
 
     renderDoughnut(inputData: Array<Expense>) {
