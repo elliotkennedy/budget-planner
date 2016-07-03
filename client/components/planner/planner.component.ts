@@ -1,7 +1,7 @@
-import { Component } from "@angular/core";
-import { DoughnutChartDirective } from '../../directives/doughnutchart.directive';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-import { BudgetService } from './budget.service';
+import {Component} from "@angular/core";
+import {DoughnutChartDirective} from "../../directives/doughnutchart.directive";
+import {ROUTER_DIRECTIVES} from "@angular/router";
+import {BudgetService} from "./../../services/budget.service";
 
 @Component({
     selector: 'planner',

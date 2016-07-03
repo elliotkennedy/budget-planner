@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DoughnutChartDirective } from '../../../directives/doughnutchart.directive';
-import { Budget, BudgetService } from '../budget.service';
+import { Budget, BudgetService } from '../../../services/budget.service';
 
 @Component({
     selector: 'income',
