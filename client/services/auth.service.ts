@@ -26,8 +26,8 @@ export class AuthService {
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
         return this.http.post(this.loginUrl, creds, { headers: headers })
-            .map(this.createSession)
-            .catch(this.handleError);
+            .map(this.createSession);
+            // .catch(this.handleError);
     }
 
     private createSession(res: Response) {

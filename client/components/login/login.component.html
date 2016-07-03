@@ -18,6 +18,12 @@
                 </div>
                 <button (click)="login()" class="ui blue submit button">Login</button>
             </div>
+            <div *ngIf="error" class="ui warning message">
+                <i (click)="clearError()" class="close icon"></i>
+                <div class="header">
+                    {{error}}
+                </div>
+            </div>
         </div>
         <div class="ui vertical divider">
             Or
