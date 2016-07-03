@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var auth = require('./auth');
-var passport = require('passport');
+var authController = require('../controllers/auth');
 
-router.post('/login', passport.authenticate('local'), (req, res) => {
-    res.json("OK");
+router.post('/login', (req, res) => {
+    authController.login(req, res);
 });
 
 module.exports = router;

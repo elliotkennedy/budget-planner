@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     templateUrl: 'client/components/login/login.component.html',
@@ -10,13 +11,12 @@ export class LoginComponent {
     public username: String;
     public password: String;
     
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService, private router: Router) {}
     
     login() {
-        console.log("logging in..");
-        var responseee;
-        this.authService.login(this.username, this.password).subscribe(response => responseee = response);
-        console.log(responseee);
+        this.authService.login(this.username, this.password).subscribe(() => {
+            this.router.navigate(['/planner']);
+        });
     }
 
 }

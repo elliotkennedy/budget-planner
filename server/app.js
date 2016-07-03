@@ -16,6 +16,8 @@ var budget = require('./routes/budget');
 
 var app = express();
 
+app.disable("x-powered-by");
+
 app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, '../public')));
 
@@ -29,11 +31,6 @@ app.use(session({
     saveUninitialized: true,
     cookie: {secure: true}
 }));
-
-// passport config
-require('./config/auth')(passport);
-app.use(passport.initialize());
-app.use(passport.session());
 
 // api routes
 app.use('/user', users);

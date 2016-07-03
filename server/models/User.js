@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-// TODO: Implement with hashing etc.
+// TODO: Implement with hashing salting etc.
 UserSchema.methods.verifyPassword = function(password) {
     return this.password === password;
 };

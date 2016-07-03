@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers} from "@angular/http";
 import {Observable} from "rxjs/Observable";
-import 'rxjs/add/operator/catch';
+import "rxjs/add/operator/catch";
 
 export class User {
 
@@ -15,19 +15,25 @@ export class User {
 @Injectable()
 export class AuthService {
 
-    private loginUrl = 'login';
+    private loginUrl = 'auth/login';
 
     constructor(private http: Http) {}
 
     login(username: String, password: String): Observable<any> {
-        return this.http.post(this.loginUrl, null, null)
-            .map(this.extractData)
+        var creds = "username=" + username + "&password=" + password;
+
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+        return this.http.post(this.loginUrl, creds, { headers: headers })
+            .map(this.createSession)
             .catch(this.handleError);
     }
 
-    private extractData(res: Response) {
-        let body = res.json();
-        return body.data || { };
+    private createSession(res: Response) {
+        var json = res.json();
+        localStorage.setItem("jwt", json.jwt);
+        return json || { };
     }
 
     private handleError(error: any) {
