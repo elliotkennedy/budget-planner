@@ -1,4 +1,5 @@
 import {Directive, ElementRef, Input} from '@angular/core';
+import {Expense} from '../components/planner/budget.service';
 
 declare var Chart:any;
 
@@ -11,7 +12,7 @@ export class DoughnutChartDirective {
     element: any;
     myChart: any;
 
-    @Input() doughnutChart: any[];
+    @Input() doughnutChart: Array<Expense>;
 
     constructor(element: ElementRef) {
         this.element = element.nativeElement;

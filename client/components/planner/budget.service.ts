@@ -6,7 +6,7 @@ export class Budget {
 
     getWeeklyIncome() {
         var budget = new Budget();
-        this.budget.income.forEach(expense => budget.addIncome(expense.getWeeklyValue()));
+        this.income.forEach(expense => budget.addIncome(expense.getWeeklyValue()));
         return budget;
     }
 
