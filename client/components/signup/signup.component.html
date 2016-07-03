@@ -1,22 +1,22 @@
 <div class="ui raised segment">
-    <div class="ui two column middle aligned very relaxed stackable grid">
+    <!--<div class="ui two column middle aligned very relaxed stackable grid">-->
         <div class="column">
             <div class="ui form">
                 <div class="field">
                     <label>Username</label>
                     <div class="ui left icon input">
-                        <input [(ngModel)]="username" (keyup.enter)="login()" type="text" placeholder="Username">
+                        <input [(ngModel)]="username" type="text" placeholder="Username">
                         <i class="user icon"></i>
                     </div>
                 </div>
                 <div class="field">
                     <label>Password</label>
                     <div class="ui left icon input">
-                        <input [(ngModel)]="password" (keyup.enter)="login()" type="password">
+                        <input [(ngModel)]="password" type="password">
                         <i class="lock icon"></i>
                     </div>
                 </div>
-                <button (click)="login()" class="ui blue submit button">Login</button>
+                <button (click)="signup()" class="ui green labeled icon button"><i class="signup icon"></i>Sign Up</button>
             </div>
             <div *ngIf="error" class="ui warning message">
                 <i (click)="clearError()" class="close icon"></i>
@@ -25,14 +25,5 @@
                 </div>
             </div>
         </div>
-        <div class="ui vertical divider">
-            Or
-        </div>
-        <div class="center aligned column">
-            <a [routerLink]="['/signup']" class="ui big green labeled icon button">
-                <i class="signup icon"></i>
-                Sign Up
-            </a>
-        </div>
-    </div>
+    <!--</div>-->
 </div>

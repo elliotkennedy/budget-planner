@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import {Component} from "@angular/core";
+import {ROUTER_DIRECTIVES} from "@angular/router";
+import {AuthService} from "../services/auth.service";
 
 @Component({
     directives: [ROUTER_DIRECTIVES],
+    providers: [ AuthService ],
     selector: 'app',
     template: `<div class="ui container">
         <nav class="ui top fixed menu">

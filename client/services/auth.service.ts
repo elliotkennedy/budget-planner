@@ -16,6 +16,7 @@ export class User {
 export class AuthService {
 
     private loginUrl = 'auth/login';
+    private userUrl = 'user';
 
     constructor(private http: Http) {}
 
@@ -28,6 +29,13 @@ export class AuthService {
         return this.http.post(this.loginUrl, creds, { headers: headers })
             .map(this.createSession);
             // .catch(this.handleError);
+    }
+
+    signup(username: String, password: String) {
+        return this.http.post(this.userUrl, {username: username, password: password})
+            .map((response) => {
+                return response.json();
+            });
     }
 
     private createSession(res: Response) {
