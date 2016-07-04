@@ -22,7 +22,8 @@ export class LoginComponent {
                 this.router.navigate(['/planner']);
             }, 
             (err) => {
-                this.error = "There was a problem, please ty again";
+                console.log(err);
+                this.error = "There was a problem, please try again";
             });
     }
     
