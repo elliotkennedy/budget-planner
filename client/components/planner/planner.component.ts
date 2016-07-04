@@ -11,15 +11,15 @@ import {Observable} from "rxjs/Observable";
 })
 export class PlannerComponent implements OnInit {
 
-    budget: Budget = new Budget();
+    budget: Budget = new Budget("");
     error: String;
 
-    input: any = {};
+    incomeInput: any = {};
 
     constructor(private budgetService: BudgetService) {}
 
     ngOnInit() {
-
+        
         this.budgetService.getBudget().subscribe(
             budget => {
                 this.budget = budget;
@@ -33,12 +33,12 @@ export class PlannerComponent implements OnInit {
     addIncome() {
 
         if (this.incomePopulated()) {
-            var name = this.input.name;
-            var rate = this.input.rate;
-            var amount = this.input.amount;
+            var name = this.incomeInput.name;
+            var rate = this.incomeInput.rate;
+            var amount = this.incomeInput.amount;
             var income = new Expense(name, amount, rate);
             this.budget.addIncome(income);
-            this.input = {};
+            this.incomeInput = {};
         }
     }
 
@@ -47,9 +47,9 @@ export class PlannerComponent implements OnInit {
     }
 
     incomePopulated(): Observable<boolean> {
-        var name = this.input.name;
-        var rate = this.input.rate;
-        var amount = this.input.amount;
+        var name = this.incomeInput.name;
+        var rate = this.incomeInput.rate;
+        var amount = this.incomeInput.amount;
         return name && rate && amount;
     }
 

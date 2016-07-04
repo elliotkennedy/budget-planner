@@ -1,16 +1,13 @@
 import {Injectable} from "@angular/core";
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs/Observable";
+import {AuthService} from "./auth.service";
 
 export class Budget {
 
     public income: Array<Expense> = [];
 
-    getWeeklyIncome() {
-        var budget = new Budget();
-        this.income.forEach(expense => budget.addIncome(expense.getWeeklyValue()));
-        return budget;
-    }
+    constructor(public _user: String) {}
 
     addIncome(income: Expense) {
         this.income.push(income);
@@ -27,6 +24,8 @@ export class Expense {
                 return new Expense(this.name, this.value * 7, Rate.WEEK);
             case Rate.YEAR:
                 return new Expense(this.name, this.value / 52, Rate.WEEK);
+            case Rate.MONTH:
+                return new Expense(this.name, this.value / 4, Rate.WEEK);
             default:
                 return this;
         }
@@ -45,16 +44,24 @@ export class BudgetService {
 
     private budgetUrl = 'budget';
 
-    constructor(private http: Http) {}
+    constructor(private http: Http, private authService: AuthService) {}
 
     getBudget(): Observable<Budget> {
-        return this.http.get(this.budgetUrl)
-            .map(this.extractData)
+        return this.http.get(this.budgetUrl + '/' + this.authService.getUser().name)
+            .map((res) => {
+                let body = res.json();
+                return body.data || new Budget(this.authService.getUser().id);
+            })
             .catch(this.handleError);
     }
 
     saveBudget(budget: Budget): Observable<Budget> {
-        return this.http.post(this.budgetUrl)
+
+        let body = JSON.stringify(budget);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.budgetUrl, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

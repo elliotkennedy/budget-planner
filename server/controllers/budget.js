@@ -25,7 +25,7 @@ module.exports = {
                 console.error(err);
                 res.sendStatus(500);
             } else {
-                res.json(budgets);
+                res.json(budgets || {});
             }
         });
     }

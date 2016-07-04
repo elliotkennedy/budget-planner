@@ -26,7 +26,7 @@ module.exports = {
             }
             
             const token = jwt.sign({ user: user.username }, secret.secret, { expiresIn: '7d' });
-            res.json({"user": user.username, "jwt": token});
+            res.json({"_id": user._id,"user": user.username, "jwt": token});
 
         });
 

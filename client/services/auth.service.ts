@@ -4,6 +4,12 @@ import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import {Subject} from "rxjs/Subject";
 
+export class User {
+
+    constructor(public id: String, public name: String, public jwt: String) {}
+
+}
+
 @Injectable()
 export class AuthService {
     
@@ -18,7 +24,15 @@ export class AuthService {
     }
     
     isLoggedIn() {
-        return localStorage.getItem("jwt") != null && localStorage.getItem("user") != null;
+        return localStorage.getItem("user") != null;
+    }
+
+    getUser() {
+        var userString = localStorage.getItem("user");
+        if (userString != null) {
+            return JSON.parse(userString);
+        }
+        return null;
     }
 
     login(username: String, password: String): Observable<any> {
@@ -30,8 +44,8 @@ export class AuthService {
         return this.http.post(this.loginUrl, creds, { headers: headers })
             .map((res) => {
                 var json = res.json();
-                localStorage.setItem("jwt", json.jwt);
-                localStorage.setItem("user", json.user);
+                var user = new User(json._id, json.user, json.jwt);
+                localStorage.setItem("user", JSON.stringify(user));
                 this.loggedInSubject.next(true);
                 return json || { };
             });
@@ -46,7 +60,6 @@ export class AuthService {
     }
 
     logout() {
-        localStorage.removeItem("jwt");
         localStorage.removeItem("user");
         this.loggedInSubject.next(false);
     }
