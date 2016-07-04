@@ -2,7 +2,7 @@ import {provideRouter, RouterConfig} from "@angular/router";
 import {LocationStrategy, HashLocationStrategy} from "@angular/common";
 import {HomeComponent} from "./components/home/home.component";
 import {SignupComponent} from "./components/signup/signup.component";
-import {PlannerRoutes} from "./components/planner/planner.routes";
+import {PlannerComponent} from "./components/planner/planner.component";
 import {LoginRoutes, AUTH_PROVIDERS} from "./components/login/login.routes";
 
 const routes: RouterConfig = [
@@ -15,7 +15,10 @@ const routes: RouterConfig = [
         path: 'signup',
         component: SignupComponent
     },
-    ...PlannerRoutes,
+    {
+        path: 'planner',
+        component: PlannerComponent
+    },
     ...LoginRoutes
 ];
 

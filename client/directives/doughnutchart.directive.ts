@@ -13,24 +13,29 @@ export class DoughnutChartDirective {
     element: any;
     myChart: any;
 
-    @Input() doughnutChart: Array<Expense>;
+    // doughnutChart: Array<Expense>;
 
     constructor(element: ElementRef) {
         this.element = element.nativeElement;
     }
+    //
+    // ngAfterViewInit() {
+    //     this.renderDoughnut();
+    // }
 
-    ngAfterViewInit() {
-        this.renderDoughnut(this.doughnutChart);
+    @Input() set doughnutChart(doughnutChart: Array<Expense>) {
+        // this.doughnutChart = doughnutChart;
+        this.renderDoughnut(doughnutChart);
     }
 
-    renderDoughnut(inputData: Array<Expense>) {
+    renderDoughnut(doughnutChart: Array<Expense>) {
         var canvas = this.element;
         var ctx = canvas.getContext('2d');
 
         var values = [];
         var labels = [];
 
-        inputData.forEach(a => {
+        doughnutChart.forEach(a => {
             labels.push(a.name);
             values.push(a.value);
         });

@@ -39,6 +39,7 @@
     "mongoose": "~4.5.2",
     "morgan": "~1.7.0",
     "ng-semantic": "~1.0.26",
+    "ng2-charts": "~1.1.0",
     "passport": "~0.3.2",
     "passport-local": "~1.0.0",
     "semantic-ui-css": "^2.1.8",
