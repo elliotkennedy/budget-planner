@@ -18,7 +18,7 @@
                 <tr *ngFor="let income of budget.income; let i = index">
                     <td><span style="font-weight: bold">{{income.name}}</span></td>
                     <td><span>Every {{income.rate}}</span></td>
-                    <td><span>£{{income.value}}</span></td>
+                    <td><span>£{{income.value.toFixed(2)}}</span></td>
                     <td>£{{income.getWeeklyValue().toFixed(2)}}</td>
                     <td><i (click)="removeIncome(i)" style="cursor: hand" class="trash outline icon"></i></td>
                 </tr>
