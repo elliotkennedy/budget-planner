@@ -4,7 +4,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {SignupComponent} from "./components/signup/signup.component";
 import {PlannerComponent} from "./components/planner/planner.component";
 import {LoginComponent} from "./components/login/login.component";
-import {AuthGuard} from "./components/login/auth.guard";
+import {AuthGuard} from "./auth.guard";
 import {AuthService} from "./services/auth.service";
 
 const routes: RouterConfig = [
@@ -15,11 +15,12 @@ const routes: RouterConfig = [
     },
     {
         path: 'signup',
-        component: SignupComponent
+        component: SignupComponent,
     },
     {
         path: 'planner',
-        component: PlannerComponent
+        component: PlannerComponent,
+        canActivate: [ AuthGuard ]
     },
     { 
         path: 'login',

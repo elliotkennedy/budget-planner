@@ -1,6 +1,5 @@
-import {Directive, ElementRef, Input} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Expense} from '../services/budget.service';
+import {Directive, ElementRef, Input} from "@angular/core";
+import {Expense} from "../services/budget.service";
 
 declare var Chart:any;
 

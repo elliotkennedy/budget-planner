@@ -1,17 +1,8 @@
-import {Injectable, Output} from "@angular/core";
-import {Http, Response, Headers} from "@angular/http";
+import {Injectable} from "@angular/core";
+import {Http, Headers} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/catch";
-import { Subject } from 'rxjs/Subject';
-
-export class User {
-
-    constructor(
-        public username: String,
-        public token: String
-    ) {}
-
-}
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class AuthService {
