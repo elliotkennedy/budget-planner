@@ -2,23 +2,31 @@
     <div class="ui top attached segment">
         <h1 class="ui left floated">Budget Planner</h1>
     </div>
-    <div class="ui attached segment">
-        <h2 class="ui left floated">Your Total Income</h2>
-    </div>
     <div *ngIf="budget.income.length > 0" class="ui attached segment">
+        <h4 class="ui dividing header">Income</h4>
         <table class="ui very basic padded table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Rate</th>
+                <th>Amount</th>
+                <th>Weekly</th>
+                <th>Remove</th>
+            </tr>
+            </thead>
             <tbody>
                 <tr *ngFor="let income of budget.income; let i = index">
                     <td><span style="font-weight: bold">{{income.name}}</span></td>
                     <td><span>Every {{income.rate}}</span></td>
                     <td><span>£{{income.value}}</span></td>
-                    <td>£ 10.99</td>
+                    <td>£10.99</td>
                     <td><i (click)="removeIncome(i)" style="cursor: hand" class="trash outline icon"></i></td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="ui attached segment">
+        <h4 class="ui dividing header">Add Income</h4>
         <form class="ui form">
             <div class="inline fields">
                 <div class="seven wide field">
@@ -58,12 +66,13 @@
                 <canvas [doughnutChart]="budget.income"></canvas>
             </div>
             <div class="column">
+                <h2 class="ui dividing header">Total income</h2>
                 <!--<canvas doughnutChart></canvas>-->
             </div>
         </div>
     </div>
     <div class="ui attached segment">
-        <h2 class="ui left floated">Your Total Outgoings</h2>
+        <h2 class="ui left floated">Outgoings</h2>
     </div>
     <div class="ui attached segment">
         <table class="ui very basic padded table">
