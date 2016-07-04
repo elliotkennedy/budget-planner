@@ -34,6 +34,13 @@ export class Budget {
         });
         return total;
     }
+    
+    getTotalWeeklyDifference() {
+        let diff = this.getTotalWeeklyIncome() - this.getTotalWeeklyOutgoings();
+        console.log(diff);
+        return diff;
+    }
+    
 }
 
 export class Expense {

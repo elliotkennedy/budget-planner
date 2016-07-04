@@ -6,21 +6,14 @@ declare var Chart:any;
 @Directive({
     selector: '[doughnutChart]'
 })
-
 export class DoughnutChartDirective {
 
     element: any;
     myChart: any;
 
-    // doughnutChart: Array<Expense>;
-
     constructor(element: ElementRef) {
         this.element = element.nativeElement;
     }
-    //
-    // ngAfterViewInit() {
-    //     this.renderDoughnut();
-    // }
 
     @Input() set doughnutChart(doughnutChart: Array<Expense>) {
         // this.doughnutChart = doughnutChart;
