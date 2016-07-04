@@ -3,7 +3,7 @@ var router = express.Router();
 var budgetController = require('../controllers/budget');
 
 router.post('/', function(req, res) {
-    budgetController.createBudget(req, res);
+    budgetController.createOrUpdateBudget(req, res);
 });
 
 router.get('/:user', function (req, res) {

@@ -16,7 +16,8 @@ const BudgetSchema = new mongoose.Schema({
     _user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
+        unique: true
     },
     income: [Expense],
     outgoings: [Expense]

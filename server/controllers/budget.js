@@ -3,7 +3,37 @@ const Budget = require('../models/Budget');
 
 module.exports = {
 
-    createBudget: function(req, res) {
+    createOrUpdateBudget: function(req, res) {
+
+        if (req.body._id) {
+            Budget.findOne({ _id: req.body._id }, (err, budget) => {
+                if (!budget) {
+                    this.saveNew(req, res);
+                } else {
+                    budget._user = req.body._user;
+                    budget.income = req.body.income;
+                    budget.outgoings = req.body.outgoings;
+                    if (err) {
+                        console.error(err);
+                        res.sendStatus(400);
+                    }
+
+                    budget.save((err) => {
+                        if (err) {
+                            console.error(err);
+                            res.sendStatus(400);
+                        } else {
+                            res.json(budget);
+                        }
+                    });
+                }
+            });
+        } else {
+            this.saveNew(req, res);
+        }
+    },
+    
+    saveNew: function (req, res) {
         var newBudget = new Budget({
             _user: req.body._user,
             income: req.body.income,
@@ -29,5 +59,6 @@ module.exports = {
             }
         });
     }
+
 
 };

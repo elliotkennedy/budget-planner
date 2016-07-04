@@ -47,16 +47,8 @@ export class DoughnutChartDirective {
             labels: labels,
             datasets: [{
                 data: values,
-                backgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56"
-                ],
-                hoverBackgroundColor: [
-                    "#FF6385",
-                    "#36A2EB",
-                    "#FFCE56"
-                ]
+                backgroundColor: this.colours,
+                hoverBackgroundColor: this.colours
             }]
         };
 
@@ -66,10 +58,17 @@ export class DoughnutChartDirective {
         });
     }
 
-    static colours = [
+    colours = [
         "#FF6384",
         "#36A2EB",
-        "#FFCE56"
+        "#FFCE56",
+        "#FF3300",
+        "#000066",
+        "#009933",
+        "#CC3300",
+        "#669999",
+        "#660066",
+        "#993399"
     ];
 
 }
