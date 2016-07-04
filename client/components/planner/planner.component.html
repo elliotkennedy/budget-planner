@@ -19,7 +19,7 @@
                     <td><span style="font-weight: bold">{{income.name}}</span></td>
                     <td><span>Every {{income.rate}}</span></td>
                     <td><span>£{{income.value}}</span></td>
-                    <td>£{{income.getWeeklyValue().value}}</td>
+                    <td>£{{income.getWeeklyValue()}}</td>
                     <td><i (click)="removeIncome(i)" style="cursor: hand" class="trash outline icon"></i></td>
                 </tr>
             </tbody>
@@ -39,7 +39,7 @@
                 <div class="four wide field">
                     <label>Every </label>
                     <select [(ngModel)]="incomeInput.rate" class="ui fluid dropdown">
-                        <option value="DAY">Day</option>
+                        <option value="Day">Day</option>
                         <option value="Week">Week</option>
                         <option value="Month">Month</option>
                         <option value="Year">Year</option>
@@ -66,8 +66,14 @@
                 <canvas [doughnutChart]="budget.income"></canvas>
             </div>
             <div class="column">
+                <br/>
                 <h2 class="ui dividing header">Total Weekly Income</h2>
-                <!--<canvas doughnutChart></canvas>-->
+                <h1 class="ui huge center aligned icon header">
+                    <i class="circular pound icon"></i>
+                </h1>
+                <h1 class="ui huge center aligned header">
+                    £{{budget.getTotalWeeklyIncome()}}
+                </h1>
             </div>
         </div>
     </div>
@@ -100,7 +106,7 @@
                 <div class="four wide field">
                     <label>Every </label>
                     <select [(ngModel)]="incomeInput.rate" class="ui fluid dropdown">
-                        <option value="DAY">Day</option>
+                        <option value="Day">Day</option>
                         <option value="Week">Week</option>
                         <option value="Month">Month</option>
                         <option value="Year">Year</option>

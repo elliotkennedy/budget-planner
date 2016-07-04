@@ -5,6 +5,7 @@ import {AuthService} from "./auth.service";
 
 export class Budget {
 
+    public _id: String;
     public income: Array<Expense> = [];
 
     constructor(public _user: String) {}
@@ -12,31 +13,32 @@ export class Budget {
     addIncome(income: Expense) {
         this.income.push(income);
     }
+
+    getTotalWeeklyIncome() {
+        var total = 0;
+        this.income.forEach(income => {
+            total += income.getWeeklyValue();
+        });
+        return total;
+    }
 }
 
 export class Expense {
 
-    constructor(public name: String, public value: number, public rate: Rate) {}
+    constructor(public name: String, public value: number, public rate: String) {}
 
     getWeeklyValue() {
         switch (this.rate) {
-            case Rate.DAY:
-                return new Expense(this.name, this.value * 7, Rate.WEEK);
-            case Rate.YEAR:
-                return new Expense(this.name, this.value / 52, Rate.WEEK);
-            case Rate.MONTH:
-                return new Expense(this.name, this.value / 4, Rate.WEEK);
+            case "Day":
+                return this.value * 7;
+            case "Year":
+                return this.value / 52;
+            case "Month":
+                return this.value / 4;
             default:
-                return this;
+                return this.value;
         }
     }
-}
-
-enum Rate {
-    DAY,
-    WEEK,
-    MONTH,
-    YEAR
 }
 
 @Injectable()
@@ -47,10 +49,13 @@ export class BudgetService {
     constructor(private http: Http, private authService: AuthService) {}
 
     getBudget(): Observable<Budget> {
-        return this.http.get(this.budgetUrl + '/' + this.authService.getUser().name)
+        return this.http.get(this.budgetUrl + '/' + this.authService.getUser().id)
             .map((res) => {
                 let body = res.json();
-                return body.data || new Budget(this.authService.getUser().id);
+                if (body) {
+                    return this.transform(body);
+                }
+                return new Budget(this.authService.getUser().id);
             })
             .catch(this.handleError);
     }
@@ -62,13 +67,20 @@ export class BudgetService {
         let options = new RequestOptions({ headers: headers });
 
         return this.http.post(this.budgetUrl, body, options)
-            .map(this.extractData)
+            .map((res) => {
+                let body = res.json();
+                return this.transform(body);
+            })
             .catch(this.handleError);
     }
 
-    private extractData(res: Response) {
-        let body = res.json();
-        return body.data || {};
+    private transform(json) {
+        let budget = new Budget(json._user);
+        budget._id = json._id;
+        json.income.forEach(income => {
+            budget.addIncome(new Expense(income.name, income.value, income.rate));
+        });
+        return budget;
     }
 
     private handleError(error: any) {

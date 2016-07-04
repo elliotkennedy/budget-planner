@@ -7,7 +7,7 @@ const Expense = new mongoose.Schema({
     rate: {
         type: String
     },
-    amount: {
+    value: {
         type: Number
     }
 });

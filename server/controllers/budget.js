@@ -20,12 +20,12 @@ module.exports = {
     },
 
     getBudgets: function (req, res) {
-        Budget.findOne({ "_user.ref": req.params.user }, (err, budgets) => {
+        Budget.findOne({ "_user": req.params.user }, (err, budgets) => {
             if (err) {
                 console.error(err);
                 res.sendStatus(500);
             } else {
-                res.json(budgets || {});
+                res.json(budgets);
             }
         });
     }
