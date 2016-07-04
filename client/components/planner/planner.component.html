@@ -195,6 +195,11 @@
             </h1>
         </div>
         <br/>
+        <div class="ui centered grid">
+            <div class="ten wide column">
+                <canvas [lineChart]="budget.getTotalWeeklyDifference()"></canvas>
+            </div>
+        </div>
     </div>
 
     <div class="ui segment" style="min-height: 70px">

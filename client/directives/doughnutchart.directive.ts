@@ -16,7 +16,6 @@ export class DoughnutChartDirective {
     }
 
     @Input() set doughnutChart(doughnutChart: Array<Expense>) {
-        // this.doughnutChart = doughnutChart;
         this.renderDoughnut(doughnutChart);
     }
 

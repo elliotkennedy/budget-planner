@@ -1,12 +1,13 @@
 import {Component, OnInit} from "@angular/core";
 import {DoughnutChartDirective} from "../../directives/doughnutchart.directive";
+import {LineChartDirective} from "../../directives/linechart.directive";
 import {Budget, BudgetService, Expense} from "../../services/budget.service";
 import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: 'planner',
     templateUrl: 'client/components/planner/planner.component.html',
-    directives: [ DoughnutChartDirective ],
+    directives: [ DoughnutChartDirective, LineChartDirective ],
     providers: [ BudgetService ]
 })
 export class PlannerComponent implements OnInit {
