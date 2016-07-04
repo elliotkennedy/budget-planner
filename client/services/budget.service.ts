@@ -7,6 +7,7 @@ export class Budget {
 
     public _id: String;
     public income: Array<Expense> = [];
+    public outgoings: Array<Expense> = [];
 
     constructor(public _user: String) {}
 
@@ -14,9 +15,21 @@ export class Budget {
         this.income.push(income);
     }
 
+    addOutgoing(outgoing: Expense) {
+        this.outgoings.push(outgoing);
+    }
+
     getTotalWeeklyIncome() {
         var total = 0;
         this.income.forEach(income => {
+            total += income.getWeeklyValue();
+        });
+        return total;
+    }
+
+    getTotalWeeklyOutgoings() {
+        var total = 0;
+        this.outgoings.forEach(income => {
             total += income.getWeeklyValue();
         });
         return total;
@@ -75,11 +88,16 @@ export class BudgetService {
     }
 
     private transform(json) {
+        
         let budget = new Budget(json._user);
         budget._id = json._id;
         json.income.forEach(income => {
             budget.addIncome(new Expense(income.name, income.value, income.rate));
         });
+        json.outgoings.forEach(outgoing => {
+            budget.addOutgoing(new Expense(outgoing.name, outgoing.value, outgoing.rate));
+        });
+
         return budget;
     }
 

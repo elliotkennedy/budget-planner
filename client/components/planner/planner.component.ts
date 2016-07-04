@@ -15,6 +15,7 @@ export class PlannerComponent implements OnInit {
     error: String;
 
     incomeInput: any = {};
+    outgoingInput: any = {};
 
     constructor(private budgetService: BudgetService) {}
 
@@ -52,6 +53,31 @@ export class PlannerComponent implements OnInit {
         var amount = this.incomeInput.amount;
         return name && rate && amount;
     }
+
+
+    addOutgoing() {
+
+        if (this.outgoingPopulated()) {
+            var name = this.outgoingInput.name;
+            var rate = this.outgoingInput.rate;
+            var amount = this.outgoingInput.amount;
+            var outgoing = new Expense(name, amount, rate);
+            this.budget.addOutgoing(outgoing);
+            this.outgoingInput = {};
+        }
+    }
+
+    removeOutgoing(index) {
+        this.budget.outgoings.splice(index, 1);
+    }
+
+    outgoingPopulated(): Observable<boolean> {
+        var name = this.outgoingInput.name;
+        var rate = this.outgoingInput.rate;
+        var amount = this.outgoingInput.amount;
+        return name && rate && amount;
+    }
+
 
     saveBudget() {
         this.budgetService.saveBudget(this.budget).subscribe(

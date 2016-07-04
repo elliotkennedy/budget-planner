@@ -40,7 +40,7 @@ export class DoughnutChartDirective {
         });
         if (values.length < 1) {
             values.push(1);
-            labels.push("no income");
+            labels.push("no input");
         }
 
         var data = {
