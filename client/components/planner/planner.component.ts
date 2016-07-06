@@ -55,7 +55,7 @@ export class PlannerComponent implements OnInit {
         var name = this.incomeInput.name;
         var rate = this.incomeInput.rate;
         var amount = this.incomeInput.amount;
-        return name && rate && amount;
+        return name && rate && amount && amount > 0 && !isNaN(amount);
     }
 
 
@@ -81,7 +81,7 @@ export class PlannerComponent implements OnInit {
         var name = this.outgoingInput.name;
         var rate = this.outgoingInput.rate;
         var amount = this.outgoingInput.amount;
-        return name && rate && amount;
+        return name && rate && amount && amount > 0 && !isNaN(amount);
     }
 
 
