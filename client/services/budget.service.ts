@@ -39,12 +39,6 @@ export class Budget {
         return this.getTotalWeeklyIncome() - this.getTotalWeeklyOutgoings();
     }
     
-    getAggregatedWeeklyDiffForYear() {
-        var diff = this.getTotalWeeklyDifference();
-        var data = [];
-        // for (int i = 0)
-    }
-    
 }
 
 export class Expense {
@@ -68,6 +62,7 @@ export class Expense {
 @Injectable()
 export class BudgetService {
 
+    private cacheName = 'currentBudget';
     private budgetUrl = 'budget';
 
     constructor(private http: Http, private authService: AuthService) {}
@@ -82,6 +77,10 @@ export class BudgetService {
                 return new Budget(this.authService.getUser().id);
             })
             .catch(this.handleError);
+    }
+    
+    cache(budget: Budget) {
+        localStorage.setItem(this.cacheName, JSON.stringify(budget));
     }
 
     saveBudget(budget: Budget): Observable<Budget> {

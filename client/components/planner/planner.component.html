@@ -167,7 +167,7 @@
                     <i class="circular pound icon"></i>
                 </h1>
                 <h1 class="ui huge center aligned header">
-                    -£{{budget.getTotalWeeklyOutgoings().toFixed(2)}}
+                    {{budget.getTotalWeeklyOutgoings() === 0 ? '£' + budget.getTotalWeeklyOutgoings().toFixed(2) : '-£' + budget.getTotalWeeklyOutgoings().toFixed(2)}}
                 </h1>
             </div>
             <div class="column">
@@ -191,7 +191,7 @@
                 <i class="circular remove icon"></i>
             </h1>
             <h1 class="ui huge center aligned header">
-                Oh dear! You are losing £{{budget.getTotalWeeklyDifference().toFixed(2)}} each week :(
+                Oh dear! You are losing £{{(budget.getTotalWeeklyDifference() * -1).toFixed(2)}} each week :(
             </h1>
         </div>
         <br/>
@@ -200,10 +200,6 @@
                 <canvas [lineChart]="budget.getTotalWeeklyDifference()"></canvas>
             </div>
         </div>
-    </div>
-
-    <div class="ui segment" style="min-height: 70px">
-        <button (click)="saveBudget()" class="ui right floated positive large button">Save</button>
     </div>
     <br/>
 </div>
