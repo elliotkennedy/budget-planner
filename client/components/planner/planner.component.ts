@@ -51,7 +51,7 @@ export class PlannerComponent implements OnInit {
         this.saveBudget();
     }
 
-    incomePopulated(): Observable<boolean> {
+    incomePopulated(): boolean {
         var name = this.incomeInput.name;
         var rate = this.incomeInput.rate;
         var amount = this.incomeInput.amount;
@@ -77,7 +77,7 @@ export class PlannerComponent implements OnInit {
         this.saveBudget();
     }
 
-    outgoingPopulated(): Observable<boolean> {
+    outgoingPopulated(): boolean {
         var name = this.outgoingInput.name;
         var rate = this.outgoingInput.rate;
         var amount = this.outgoingInput.amount;

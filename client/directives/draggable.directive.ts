@@ -11,19 +11,23 @@ export class DraggableDirective {
         this._defaultColor = colorName || this._defaultColor;
     }
     @Input('draggableContent') highlightColor: string;
-    // @HostListener('dragdrop') onMouseEnter() {
-    //     this.highlight(this.highlightColor || this._defaultColor);
-    //
-    // }
-    //
-    onDragEnter(e:any) {
-        e.preventDefault();
-        this.el.style.backgroundColor = 'red';
+
+    @HostListener('drag') onMouseEnter() {
+        this.highlight(this.highlightColor || this._defaultColor);
+
     }
 
-    // @HostListener('mouseleave') onMouseLeave() {
-    //     this.highlight(null);
-    // }
+    @HostListener('dragover') onDragOver() {
+        this.highlight(this.highlightColor || this._defaultColor);
+    }
+    
+    @HostListener('dragstart') onDragStart() {
+        this.highlight(this.highlightColor || this._defaultColor);
+    }
+
+    @HostListener('mouseleave') onMouseLeave() {
+        this.highlight(null);
+    }
     private highlight(color: string) {
         this.el.style.backgroundColor = color;
     }
