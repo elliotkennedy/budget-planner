@@ -1,11 +1,47 @@
 body {
     padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+    font-family: 'Roboto', sans-serif;
     background: #f4f4f4;
+    color: #4c4f52;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
 }
 
 a {
     color: #00B7FF;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    color: #005689;
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    color: #005689;
+    font-family: 'Roboto', sans-serif;
+}
+
+h3 {
+    color: #005689;
+    font-family: 'Roboto', sans-serif;
+}
+
+h4 {
+    color: #005689;
+    font-family: 'Roboto', sans-serif;
+}
+
+.ui.header {
+    color: #005689;
+    font-family: 'Roboto', sans-serif;
+}
+
+.ui.icon {
+    color: black;
 }
 
 .image-text {
@@ -18,13 +54,26 @@ a {
     margin-top: 130px;
     z-index: 100;
     text-transform: uppercase;
-    color: #ffffff;
+}
+
+.banner-image {
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.15);
 }
 
 .main-header {
-    font-size: 5em;
+    font-size: 5rem;
+    color: #ffffff;
 }
 
 .sub-header {
-    font-size: 3em;
+    font-size: 3rem;
+    color: #ffffff;
+}
+
+.ui.header.icon-label {
+    color: #4c4f52;
+}
+
+.ui.header.page-header {
+    color: #4c4f52;
 }

@@ -1,6 +1,6 @@
 <div class="ui container">
     <div class="ui segment">
-        <h1 class="ui left floated">Budget Planner</h1>
+        <h1 class="ui header page-header">Budget Planner</h1>
     </div>
     <div *ngIf="budget.income.length > 0" class="ui attached segment">
         <h4 class="ui dividing header">Income</h4>
@@ -69,10 +69,10 @@
     <div class="ui attached segment">
         <div class="ui two column divided grid">
             <div class="column">
-                <h2 class="ui dividing header">Your Income Breakdown</h2>
+                <h4 class="ui dividing header">Your Income Breakdown</h4>
             </div>
             <div class="column">
-                <h2 class="ui dividing header">Total Weekly Income</h2>
+                <h4 class="ui dividing header">Total Weekly Income</h4>
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@
                 <h1 class="ui huge center aligned icon header">
                     <i class="circular pound icon"></i>
                 </h1>
-                <h1 class="ui huge center aligned header">
+                <h1 class="ui huge center aligned header icon-label">
                     £{{budget.getTotalWeeklyIncome().toFixed(2)}}
                 </h1>
             </div>
@@ -159,10 +159,10 @@
     <div class="ui attached segment">
         <div class="ui two column divided grid">
             <div class="column">
-                <h2 class="ui dividing header">Total Weekly Outgoings</h2>
+                <h4 class="ui dividing header">Total Weekly Outgoings</h4>
             </div>
             <div class="column">
-                <h2 class="ui dividing header">Outgoings Breakdown</h2>
+                <h4 class="ui dividing header">Outgoings Breakdown</h4>
             </div>
         </div>
     </div>
@@ -173,7 +173,7 @@
                 <h1 class="ui huge center aligned icon header">
                     <i class="circular pound icon"></i>
                 </h1>
-                <h1 class="ui huge center aligned header">
+                <h1 class="ui huge center aligned header icon-label">
                     {{budget.getTotalWeeklyOutgoings() === 0 ? '£' + budget.getTotalWeeklyOutgoings().toFixed(2) : '-£' + budget.getTotalWeeklyOutgoings().toFixed(2)}}
                 </h1>
             </div>
@@ -189,7 +189,7 @@
             <h1 class="ui huge center aligned icon header">
                 <i class="circular checkmark icon"></i>
             </h1>
-            <h1 class="ui huge center aligned header">
+            <h1 class="ui huge center aligned header icon-label">
                 Congratulations! You save £{{budget.getTotalWeeklyDifference().toFixed(2)}} each week!
             </h1>
         </div>
@@ -197,7 +197,7 @@
             <h1 class="ui huge center aligned icon header">
                 <i class="circular remove icon"></i>
             </h1>
-            <h1 class="ui huge center aligned header">
+            <h1 class="ui huge center aligned header icon-label">
                 Oh dear! You are losing £{{(budget.getTotalWeeklyDifference() * -1).toFixed(2)}} each week :(
             </h1>
         </div>
