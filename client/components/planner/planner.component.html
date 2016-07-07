@@ -79,7 +79,7 @@
     <div class="ui bottom attached segment">
         <div class="ui two column divided grid">
             <div class="column">
-                <canvas [doughnutChart]="budget.income"></canvas>
+                <canvas [doughnutChart]="budget.income" [initialColour]="'#36A2EB'"></canvas>
             </div>
             <div class="column">
                 <br/>
@@ -178,7 +178,7 @@
                 </h1>
             </div>
             <div class="column">
-                <canvas [doughnutChart]="budget.outgoings"></canvas>
+                <canvas [doughnutChart]="budget.outgoings" [initialColour]="'#FF6384'"></canvas>
             </div>
         </div>
     </div>

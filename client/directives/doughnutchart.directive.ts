@@ -19,6 +19,10 @@ export class DoughnutChartDirective {
         this.renderDoughnut(doughnutChart);
     }
 
+    @Input() set initialColour(initialColour: string){
+        this.colours.unshift(initialColour);
+    }
+
     renderDoughnut(doughnutChart: Array<Expense>) {
         var canvas = this.element;
         var ctx = canvas.getContext('2d');
@@ -51,15 +55,13 @@ export class DoughnutChartDirective {
     }
 
     colours = [
-        "#FF6384",
-        "#36A2EB",
         "#FFCE56",
-        "#FF3300",
+        "#660066",
         "#000066",
+        "#FF3300",
         "#009933",
         "#CC3300",
         "#669999",
-        "#660066",
         "#993399"
     ];
 
