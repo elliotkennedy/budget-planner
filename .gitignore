@@ -5,3 +5,4 @@ budget-planner.iml
 typings
 client/**/*.js
 client/**/*.js.map
+bower_components

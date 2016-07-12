@@ -82,9 +82,8 @@ export class PlannerComponent implements OnInit {
         var amount = this.outgoingInput.amount;
         return name && rate && amount && amount > 0 && !isNaN(amount);
     }
-
-
-    private saveBudget() {
+    
+    saveBudget = () => {
         this.budgetService.saveBudget(this.budget).subscribe(
             budget => {
                 this.budget = budget;

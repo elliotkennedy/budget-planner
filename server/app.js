@@ -36,6 +36,7 @@ app.use('/client', express.static(path.join(__dirname, '../client')));
 
 //todo probably shouldn't expose everything
 app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')));
+app.use('/bower_components', express.static(path.join(__dirname, '../bower_components')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

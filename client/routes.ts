@@ -10,8 +10,7 @@ import {AuthService} from "./services/auth.service";
 const routes: RouterConfig = [
     {
         path: '',
-        component: HomeComponent,
-        terminal: true
+        component: HomeComponent
     },
     {
         path: 'signup',

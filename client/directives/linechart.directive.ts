@@ -1,7 +1,5 @@
 import {Directive, ElementRef, Input} from "@angular/core";
-import {Expense} from "../services/budget.service";
-
-declare var Chart:any;
+import {Chart} from "chart.js";
 
 @Directive({
     selector: '[lineChart]'
@@ -9,7 +7,7 @@ declare var Chart:any;
 export class LineChartDirective {
 
     element: any;
-    myChart: any;
+    myChart: Chart;
 
     constructor(element: ElementRef) {
         this.element = element.nativeElement;
@@ -20,6 +18,10 @@ export class LineChartDirective {
     }
 
     renderLineChart(lineChart: number) {
+        if (this.myChart) {
+            this.myChart.destroy();
+        }
+
         var canvas = this.element;
         var ctx = canvas.getContext('2d');
 
