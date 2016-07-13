@@ -65,3 +65,6 @@ body {
     max-width: 75%;
 }
 
+.ui.vertical.planner {
+    padding: 1em 2em;
+}
