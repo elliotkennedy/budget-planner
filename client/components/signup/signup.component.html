@@ -1,5 +1,5 @@
-<div class="ui raised segment">
-    <!--<div class="ui two column middle aligned very relaxed stackable grid">-->
+<div class="login-form">
+    <div class="ui raised segment">
         <div class="column">
             <div class="ui form">
                 <div class="field">
@@ -12,11 +12,12 @@
                 <div class="field">
                     <label>Password</label>
                     <div class="ui left icon input">
-                        <input [(ngModel)]="password" (keyup.enter)="signup()" type="password">
+                        <input [(ngModel)]="password" (keyup.enter)="signup()" type="password" placeholder="Password">
                         <i class="lock icon"></i>
                     </div>
                 </div>
                 <button (click)="signup()" class="ui green labeled icon button"><i class="signup icon"></i>Sign Up</button>
+                <button [routerLink]="['/login']" class="ui red labeled icon button"><i class="left arrow icon"></i>Back</button>
             </div>
             <div *ngIf="error" class="ui warning message">
                 <i (click)="clearError()" class="close icon"></i>
@@ -25,5 +26,5 @@
                 </div>
             </div>
         </div>
-    <!--</div>-->
+    </div>
 </div>

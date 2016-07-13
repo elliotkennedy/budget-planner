@@ -1,8 +1,10 @@
 import {Component, Output} from "@angular/core";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {ROUTER_DIRECTIVES} from "@angular/router";
 
 @Component({
+    directives: [ROUTER_DIRECTIVES],
     templateUrl: 'client/components/signup/signup.component.html'
 })
 export class SignupComponent {

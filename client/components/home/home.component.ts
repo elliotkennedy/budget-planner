@@ -4,7 +4,7 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/map'
 
 @Component({
-    directives: [ ROUTER_DIRECTIVES ],
+    directives: [ROUTER_DIRECTIVES],
     selector: 'home',
     templateUrl: `client/components/home/home.component.html`
 })

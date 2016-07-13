@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
     providers: [ AuthService ],
     selector: 'app',
     template: `<div class="pusher">
-        <nav class="ui top fixed menu">
+        <nav class="ui large top fixed menu">
             <a [routerLink]="['/']" routerLinkActive="active" class="item">Home</a>
             <a [routerLink]="['/planner']" routerLinkActive="active" class="item">Planner</a>
             <div class="right menu">
