@@ -18,10 +18,6 @@ export class DoughnutChartDirective {
         this.renderDoughnut(doughnutChart);
     }
 
-    @Input() set initialColour(initialColour: string){
-        this.colours.unshift(initialColour);
-    }
-
     renderDoughnut(doughnutChart: Array<Expense>) {
         if (this.myChart) {
             this.myChart.destroy();
@@ -58,6 +54,8 @@ export class DoughnutChartDirective {
     }
 
     colours = [
+        "#36A2EB",
+        "#FF6384",
         "#FFCE56",
         "#660066",
         "#000066",

@@ -85,7 +85,7 @@
         <div class="ui vertical segment" >
             <div class="ui two column divided grid">
                 <div class="column">
-                    <canvas [doughnutChart]="budget.income" [initialColour]="'#36A2EB'"></canvas>
+                    <canvas [doughnutChart]="budget.income"></canvas>
                 </div>
                 <div class="column">
                     <br/>
@@ -165,7 +165,7 @@
             </div>
         </form>
     </div>
-    <div *ngIf="budget.income.length > 0">
+    <div *ngIf="budget.outgoings.length > 0">
         <div class="ui vertical segment">
             <div class="ui two column divided grid">
                 <div class="column">
@@ -188,14 +188,14 @@
                     </h1>
                 </div>
                 <div class="column">
-                    <canvas [doughnutChart]="budget.outgoings" [initialColour]="'#FF6384'"></canvas>
+                    <canvas [doughnutChart]="budget.outgoings"></canvas>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div *ngIf="budget.getTotalWeeklyDifference() !== 0" class="ui vertical planner segment">
+<div *ngIf="budget.income.length > 0 && budget.outgoings.length > 0" class="ui vertical planner segment">
     <h4 class="ui dividing header">Summary</h4>
     <div *ngIf="budget.getTotalWeeklyDifference() > 0">
         <h1 class="ui huge center aligned icon header">
@@ -213,6 +213,15 @@
             Oh dear! You are losing £{{(budget.getTotalWeeklyDifference() * -1).toFixed(2)}} each week :(
         </h1>
     </div>
+    <div *ngIf="budget.getTotalWeeklyDifference() === 0">
+        <h1 class="ui huge center aligned icon header">
+            <i class="circular meh icon"></i>
+        </h1>
+        <h1 class="ui huge center aligned header icon-label">
+            You are spending as much as you earn.
+        </h1>
+    </div>
+
     <br/>
     <div class="ui centered grid">
         <div class="ten wide column">

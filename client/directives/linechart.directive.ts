@@ -79,7 +79,7 @@ export class LineChartDirective {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: 'Savings'
+                        labelString: 'Savings (&#163;)'
                     }
                 }]
             }
