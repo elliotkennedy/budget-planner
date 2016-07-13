@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, HostListener} from "@angular/core";
+import {Directive, ElementRef, Input} from "@angular/core";
 
 declare var $:any;
 
@@ -7,7 +7,6 @@ declare var $:any;
 })
 export class DraggableDirective {
 
-    private _callback: Function;
     private el: HTMLElement;
 
     constructor(el: ElementRef) {
@@ -18,9 +17,11 @@ export class DraggableDirective {
 
     ngAfterViewInit() {
         $(this.el).sortable({
-            stop: this.callback
+            update: () => {
+                var ids = $(this.el).sortable('toArray');
+                this.callback(ids)
+            }
         });
-        // $(this.el).disableSelection();
     }
 
 }

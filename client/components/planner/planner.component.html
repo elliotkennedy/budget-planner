@@ -15,7 +15,7 @@
                     <th>Remove</th>
                 </tr>
                 </thead>
-                <tbody [draggable] [callback]="saveBudget">
+                <tbody [draggable] [callback]="reorderIncome">
                 <tr *ngFor="let income of budget.income; let i = index" [attr.id]="i">
                     <td><span style="font-weight: bold">{{income.name}}</span></td>
                     <td><span>Every {{income.rate}}</span></td>
@@ -108,7 +108,7 @@
                     <th>Remove</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody [draggable] [callback]="reorderOutgoings">
                 <tr *ngFor="let outgoing of budget.outgoings; let i = index">
                     <td><span style="font-weight: bold">{{outgoing.name}}</span></td>
                     <td><span>Every {{outgoing.rate}}</span></td>

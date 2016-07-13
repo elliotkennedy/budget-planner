@@ -35,7 +35,7 @@ export class DoughnutChartDirective {
 
         doughnutChart.forEach(a => {
             labels.push(a.name);
-            values.push(a.getWeeklyValue());
+            values.push(a.getWeeklyValue().toFixed(2));
         });
         if (values.length < 1) {
             values.push(1);

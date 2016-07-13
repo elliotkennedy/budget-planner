@@ -83,7 +83,17 @@ export class PlannerComponent implements OnInit {
         return name && rate && amount && amount > 0 && !isNaN(amount);
     }
     
-    saveBudget = () => {
+    reorderIncome = (arrayOrder) => {
+        this.reorderArray(arrayOrder, this.budget.income);
+        this.saveBudget();
+    };
+    
+    reorderOutgoings = (arrayOrder) => {
+        this.reorderArray(arrayOrder, this.budget.outgoings);
+        this.saveBudget();
+    };
+    
+    private saveBudget = () => {
         this.budgetService.saveBudget(this.budget).subscribe(
             budget => {
                 this.budget = budget;
@@ -91,6 +101,13 @@ export class PlannerComponent implements OnInit {
             error =>  {
                 this.error = <any>error
             });
-    }
+    };
+
+    private reorderArray(arrayOrder, array) {
+        var clone = array.slice(0);
+        for (let i = 0; i < array.length; i++) {
+            array[i] = clone[parseInt(arrayOrder[i])];
+        }
+    };
 
 }
