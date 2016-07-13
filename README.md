@@ -8,3 +8,7 @@ To run locally, start MongoDB in docker with:
 Compile Typescript
 
 `tsc -p ./client`
+
+Start Express Server
+
+`node ./server/bin/www`
