@@ -49,7 +49,11 @@ export class DoughnutChartDirective {
 
         this.myChart = new Chart(ctx, {
             type: 'doughnut',
-            data: data
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
         });
     }
 

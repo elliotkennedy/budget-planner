@@ -38,6 +38,10 @@ body {
         font-size: 1.5em;
         margin-top: 0.5em;
     }
+
+    #line-graph {
+        display: none;
+    }
 }
 
 .ui.vertical.stripe {
@@ -68,3 +72,4 @@ body {
 .ui.vertical.planner {
     padding: 1em 2em;
 }
+
