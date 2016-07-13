@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
     directives: [ ROUTER_DIRECTIVES ],
     providers: [ AuthService ],
     selector: 'app',
-    template: `<div class="ui container">
+    template: `<div class="pusher">
         <nav class="ui top fixed menu">
             <a [routerLink]="['/']" routerLinkActive="active" class="item">Home</a>
             <a [routerLink]="['/planner']" routerLinkActive="active" class="item">Planner</a>
@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
             </div>
         </nav>
         <router-outlet></router-outlet>
-      </div>`
+        </div>`
 })
 
 export class AppComponent {
