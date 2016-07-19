@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
+import {Http, Headers, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs/Observable";
-import {AuthService} from "./auth.service";
 
 export class Budget {
 
@@ -62,25 +61,32 @@ export class Expense {
 @Injectable()
 export class BudgetService {
 
-    private cacheName = 'currentBudget';
     private budgetUrl = 'budget';
 
-    constructor(private http: Http, private authService: AuthService) {}
+    constructor(private http: Http) {}
 
-    getBudget(): Observable<Budget> {
-        return this.http.get(this.budgetUrl + '/' + this.authService.getUser().id)
+    getBudget(userId: String): Observable<Budget> {
+        return this.http.get(this.budgetUrl + '/user/' + userId, null, { withCredentials: true })
             .map((res) => {
+
                 let body = res.json();
                 if (body) {
                     return this.transform(body);
                 }
-                return new Budget(this.authService.getUser().id);
-            })
-            .catch(this.handleError);
+                return body;
+            });
     }
-    
-    cache(budget: Budget) {
-        localStorage.setItem(this.cacheName, JSON.stringify(budget));
+
+    createBudget(budget: Budget) {
+        let body = JSON.stringify(budget);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.budgetUrl, body, options)
+            .map((res) => {
+                let body = res.json();
+                return this.transform(body.data);
+            });
     }
 
     saveBudget(budget: Budget): Observable<Budget> {
@@ -89,16 +95,15 @@ export class BudgetService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.budgetUrl, body, options)
+        return this.http.put(this.budgetUrl + '/' + budget._id, body, options)
             .map((res) => {
                 let body = res.json();
-                return this.transform(body);
-            })
-            .catch(this.handleError);
+                return this.transform(body.data);
+            });
     }
 
     private transform(json) {
-        
+
         let budget = new Budget(json._user);
         budget._id = json._id;
         json.income.forEach(income => {
@@ -111,10 +116,10 @@ export class BudgetService {
         return budget;
     }
 
-    private handleError(error: any) {
-        let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg); // log to console
-        return Observable.throw(errMsg);
-    }
+    // private handleError(error: any) {
+    //     let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    //     console.error(errMsg); // log to console
+    //     return Observable.throw(errMsg);
+    // }
 
 }

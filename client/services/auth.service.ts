@@ -1,12 +1,12 @@
 import {Injectable} from "@angular/core";
-import {Http, Headers} from "@angular/http";
+import {Http} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import {Subject} from "rxjs/Subject";
 
 export class User {
 
-    constructor(public id: String, public name: String, public jwt: String) {}
+    constructor(public id: String, public name: String) {}
 
 }
 
@@ -36,20 +36,15 @@ export class AuthService {
     }
 
     login(username: String, password: String): Observable<any> {
-        var creds = "username=" + username + "&password=" + password;
-
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
-        return this.http.post(this.loginUrl, creds, { headers: headers })
+        
+        return this.http.post(this.loginUrl, { username: username, password: password})
             .map((res) => {
+                console.log(res);
                 var json = res.json();
-                var user = new User(json._id, json.user, json.jwt);
+                var user = new User(json._id , json.username);
                 localStorage.setItem("user", JSON.stringify(user));
                 this.loggedInSubject.next(true);
-                return json || { };
             });
-            // .catch(this.handleError);
     }
 
     signup(username: String, password: String) {
@@ -62,6 +57,7 @@ export class AuthService {
     logout() {
         localStorage.removeItem("user");
         this.loggedInSubject.next(false);
+
     }
 
     private handleError(error: any) {

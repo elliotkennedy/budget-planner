@@ -1,34 +1,39 @@
 'use strict';
 const User = require('../models/User');
 
-module.exports = {
-
-    createUser: function(req, res) {
-        var newUser = new User({
-            username: req.body.username,
-            password: req.body.password
-        });
-        newUser.save((err) => {
-            if (err) {
-                console.error(err);
-                res.sendStatus(400);
-            } else {
-                res.json(newUser);
-            }
-        });
-    },
-
-    getUser: function (req, res) {
-        User.findOne({ username: req.params.username }, (err, user) => {
-            if (err) {
-                console.error(err);
-                res.sendStatus(500);
-            } else if (!user) {
-                res.sendStatus(404);
-            } else {
-                res.json(user);
-            }
-        });
+function handleResponse(res, obj, error) {
+    if (error) {
+        console.log(error);
+        res.send(error);
+        return;
     }
 
+    res.json(obj);
+}
+
+exports.createUser = (req, res) => {
+    var newUser = new User({
+        username: req.body.username
+    });
+
+    User.register(newUser, req.body.password, (err, user) => {
+        const responseObj = { message: 'User added', data: user };
+        handleResponse(res, responseObj, err);
+    });
+};
+
+exports.getUser = (req, res) => {
+    const username = req.params.username;
+
+    User.findByUsername(username, (err, user) => {
+        handleResponse(res, user, err);
+    });
+};
+
+exports.getUserFromLogin = (req, res) => {
+    const username = req.body.username;
+
+    User.findByUsername(username, (err, user) => {
+        handleResponse(res, user, err);
+    });
 };

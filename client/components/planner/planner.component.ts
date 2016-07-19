@@ -3,6 +3,8 @@ import {DoughnutChartDirective} from "../../directives/doughnutchart.directive";
 import {LineChartDirective} from "../../directives/linechart.directive";
 import {Budget, BudgetService, Expense} from "../../services/budget.service";
 import {DraggableDirective} from "../../directives/draggable.directive";
+import {AuthService} from "../../services/auth.service";
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'planner',
@@ -18,16 +20,28 @@ export class PlannerComponent implements OnInit {
     incomeInput: any = {};
     outgoingInput: any = {};
 
-    constructor(private budgetService: BudgetService) {}
+    constructor(private budgetService: BudgetService, private authService: AuthService, private router: Router) {
+        this.budget = new Budget(this.authService.getUser().id);
+    }
 
     ngOnInit() {
-        
-        this.budgetService.getBudget().subscribe(
+
+        this.budgetService.getBudget(this.authService.getUser().id).subscribe(
             budget => {
-                this.budget = budget;
+                if (budget) {
+                    this.budget = budget;
+                } else {
+                    this.budgetService.createBudget(this.budget).subscribe(
+                        budget => {
+                            this.budget = budget;
+                        },
+                        error =>  {
+                            this.handleError(error);
+                        });
+                }
             },
             error =>  {
-                this.error = <any>error
+                this.handleError(error);
             });
 
     }
@@ -82,24 +96,24 @@ export class PlannerComponent implements OnInit {
         var amount = this.outgoingInput.amount;
         return name && rate && amount && amount > 0 && !isNaN(amount);
     }
-    
+
     reorderIncome = (arrayOrder) => {
         this.reorderArray(arrayOrder, this.budget.income);
         this.saveBudget();
     };
-    
+
     reorderOutgoings = (arrayOrder) => {
         this.reorderArray(arrayOrder, this.budget.outgoings);
         this.saveBudget();
     };
-    
+
     private saveBudget = () => {
         this.budgetService.saveBudget(this.budget).subscribe(
             budget => {
                 this.budget = budget;
             },
             error =>  {
-                this.error = <any>error
+                this.handleError(error);
             });
     };
 
@@ -109,5 +123,15 @@ export class PlannerComponent implements OnInit {
             array[i] = clone[parseInt(arrayOrder[i])];
         }
     };
+
+    private handleError(error: any) {
+        console.log(`Error: ${error}`);
+        if (error.status == 401) {
+            this.authService.logout();
+            this.router.navigate(['/login'])
+        } else {
+            this.error = error.message;
+        }
+    }
 
 }

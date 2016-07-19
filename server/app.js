@@ -24,7 +24,11 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(session({secret:'secret'}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/auth');
 
 // api routes
 app.use('/user', users);

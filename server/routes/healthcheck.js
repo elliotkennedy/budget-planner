@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var healthcheckController = require('../controllers/healthcheck');
 
-router.get('/', function (req, res) {
-    //TODO db healthcheck
-    res.json({status: 'UP'});
-});
+router.get('/', healthcheckController.healthcheck);
 
 module.exports = router;

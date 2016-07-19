@@ -1,35 +1,10 @@
-var User = require('../models/User');
-var jwt = require('jsonwebtoken');
-var secret = require('../config/auth');
+var passport = require('passport');
 
-module.exports = {
+exports.authenticate = passport.authenticate('local');
 
-    login: function (req, res) {
-
-        var username = req.body.username;
-        var password = req.body.password;
-
-        if (!username || !password) {
-            res.sendStatus(400);
-            return;
+exports.isAuthenticated = (req, res, next) => {
+        if (req.isAuthenticated()) {
+            return next();
         }
-
-        User.findOne({ username: username }, (err, user) => {
-            if (err) {
-                res.sendStatus(500);
-                return;
-            }
-            // No user found with that username
-            if (!user || !user.verifyPassword(password)) {
-                res.sendStatus(401);
-                return;
-            }
-            
-            const token = jwt.sign({ user: user.username }, secret.secret, { expiresIn: '7d' });
-            res.json({"_id": user._id,"user": user.username, "jwt": token});
-
-        });
-
-    }
-
-};
+        res.status(401).send("Unauthorized");
+    };
