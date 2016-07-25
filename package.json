@@ -6,6 +6,7 @@
   "scripts": {
     "start": "concurrently \"tsc -p ./client\" && \"node ./server/bin/www\" ",
     "postinstall": "typings install",
+    "test": "make test",
     "tsc": "tsc -p ./client",
     "tsc:w": "tsc -w -p ./client",
     "typings": "typings"
@@ -44,6 +45,8 @@
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
+    "mocha": "^2.5.3",
+    "should": "^10.0.0",
     "typescript": "^1.8.10",
     "typings": "^1.3.1"
   }
